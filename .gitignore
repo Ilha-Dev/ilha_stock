@@ -1,0 +1,14 @@
+# venvs
+.venv
+venv
+
+# ide's files
+.vscode
+.idea
+
+# files cached
+*.pyc
+__pycache__
+
+# database
+*.sqlite3
