@@ -1,0 +1,4 @@
+.stk-bg--login {
+    background-image: url('/static/images/bg-login.jpg');
+    background-size: cover;
+}
