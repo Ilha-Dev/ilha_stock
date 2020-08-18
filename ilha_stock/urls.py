@@ -6,4 +6,5 @@ urlpatterns = [
     path('', include('core.urls', namespace='core')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('categories/', include('categories.urls', namespace='categories')),
+    path('brands/', include('brands.urls', namespace='brands')),
 ]

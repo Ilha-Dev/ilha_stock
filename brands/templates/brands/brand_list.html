@@ -1,0 +1,83 @@
+{% extends 'bases/base_dashboard.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between">
+    <h1 class="h3 mb-4 text-gray-800">Marcas</h1>
+    <div>
+        <a href="{% url 'brands:create' %}" class="btn btn-success shadow">
+            <i class="fas fa-plus"></i> Nova Marca
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-12 col-md-8"></div>
+                    <div class="col-12 col-md-4">
+                        <form method="get" class="form-inline float-right">
+                            <div class="input-group">
+                                <input type="text" class="form-control" 
+                                    placeholder="Pesquisar" name="search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Data de criação</th>
+                                <th>Data de atualização</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for brand in object_list %}
+                            <tr>
+                                <td>{{ brand.name }}</td>
+                                <td>{{ brand.created_at }}</td>
+                                <td>{{ brand.updated_at }}</td>
+                                <td>
+                                    <div>
+                                        <a href="{% url 'brands:update' brand.pk %}" 
+                                            class="btn btn-warning btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            data-toggle="modal" data-target="#deleteModal{{brand.pk}}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                        {% include 'brands/components/brand_delete_modal.html' %}
+                                    </div>
+                                </td>
+                            </tr>
+                    {% empty %}
+                    <tr>
+                        <td class="text-center" colspan="100%">
+                            Nenhum dado cadastrado
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}
